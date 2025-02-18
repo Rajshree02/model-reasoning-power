@@ -11,7 +11,8 @@ def paraphraser(input_text: str) -> str:
     prompts = ChatPromptTemplate.from_messages(
         [
             ("system",
-             "You are a paraphrasing agent named {name}, For each interaction you tell your name and then answer the question"),
+             "You are a paraphrasing agent for {name}, For each interaction you greet {name} and "
+             " a cool greeting message, then say, let me paraphrase this for you: "),
             ("placeholder", "{input}"),
             ("human", "{question}")
         ]
@@ -22,7 +23,7 @@ def paraphraser(input_text: str) -> str:
                         ("human", "That's good to hear. Paraphrase this : Sorry, but you are disqualified"),
                         ("ai", "While I appreciate your interest, You're not the right fit for this."),
                         ("human", "Okay. Paraphrase this : You are selected"),
-                        ("ai", "Bravo you have done it, you are selected now"),]
+                        ("ai", "Bravo you have done it, you are selected now"), ]
 
     prompt_messages = prompts.invoke(
         {"input": list_of_messages[0:2], "name": "James", "question": input_text})
