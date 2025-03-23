@@ -1,2 +1,2 @@
-run:
-    uv run python app.py
+paraphrase text:
+    uv run python app.py "{{text}}"
